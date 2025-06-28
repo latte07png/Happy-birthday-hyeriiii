@@ -5,7 +5,7 @@
   <title>Happy Birthday Hyeriii</title>
   <style>
     body {
-      background-color: #8b004f; /* dark pink */
+      background: linear-gradient(135deg, #ffc0cb, #add8e6, #dda0dd);
       font-family: 'Courier New', Courier, monospace;
       color: #fff;
       text-align: center;
@@ -20,7 +20,7 @@
       border: 4px solid #ff69b4;
       border-radius: 20px;
       padding: 40px;
-      max-width: 500px;
+      max-width: 600px;
       margin: 0 auto;
       box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
     }
@@ -45,7 +45,6 @@
       top: -20px;
       font-size: 24px;
       animation: fall linear infinite;
-      color: #ffb6c1;
       pointer-events: none;
       opacity: 0.9;
     }
@@ -60,11 +59,8 @@
     #letter {
       display: none;
       margin-top: 30px;
-    }
-
-    iframe {
-      margin-top: 20px;
-      border-radius: 12px;
+      font-size: 17px;
+      line-height: 1.7;
     }
   </style>
 </head>
@@ -79,13 +75,17 @@
 
   <div id="letter" class="card">
     <p>
-      Happy birthday, Hyeriii 🩷🎉<br><br>
-      I made this just for you. Thank you for existing and being so lovable in your own little ways.<br><br>
-      I want to tell you how important you are to me. Sometimes I don’t know how to say it, but I really mean it.<br><br>
-      You make things lighter just by being there, and I’m super thankful I got to know you.<br><br>
-      <strong>You're irreplaceable.</strong>
+      Happy birthday, Hyeriii. 💌<br><br>
+      I made this just for you. Thank you for existing and for being so lovable in your own little ways.  
+      I want to tell you how important you are to me. Sometimes I don’t know how to say it,  
+      but I hope this shows how much I truly mean it.<br><br>
+      Every time I think about you, I smile. Even in silence, you make me feel seen and safe.  
+      You make things lighter just by being there, and I'm beyond thankful that I got to know someone like you.<br><br>
+      You’re one of the kindest souls I’ve ever met. I may not always have the right words to say,  
+      but I hope you know how much I treasure your presence.  
+      You're not just special — <strong>you're irreplaceable</strong>, and I mean that with all my heart.<br><br>
+      I’m always rooting for your happiness. Thank you for being you. 🎂💜
     </p>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6mINjVkO6jiFT1QbAGz6bh?utm_source=generator" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
   </div>
 
   <script>
@@ -120,11 +120,12 @@
       }
     }
 
-    // Heart rain animation
+    // Heart rain animation 💜🩷💙
     function createHeart() {
+      const heartStyles = ["💜", "🩷", "💙"];
       const heart = document.createElement("div");
       heart.classList.add("heart");
-      heart.textContent = "💖";
+      heart.textContent = heartStyles[Math.floor(Math.random() * heartStyles.length)];
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = 2 + Math.random() * 3 + "s";
       document.body.appendChild(heart);
