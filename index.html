@@ -2,95 +2,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You're Irreplaceable</title>
+  <title></title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ffb6d9, #a3b6ff, #dca3ff);
-      overflow: hidden;
-      font-family: 'Segoe UI', sans-serif;
-    }.frame {
-  position: relative;
-  width: 90%;
-  max-width: 700px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6ec1e4, #f6a9d2, #c19ff5);
+      background-size: 600% 600%;
+      animation: gradientBG 10s ease infinite;
+      color: #fff;
+      text-align: center;
+    }@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.question-container, .note-container {
+  display: none;
+  padding: 20px;
   margin: 50px auto;
-  background-color: #ff4f91;
-  padding: 30px;
+  max-width: 700px;
+  border: 2px solid #fff;
   border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.2);
-  border: 4px dashed white;
-  color: white;
-  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.frame p {
-  line-height: 1.8;
-  white-space: pre-wrap;
-  font-size: 16px;
+.question-container.active, .note-container.active {
+  display: block;
 }
 
-.heart {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: pink;
-  transform: rotate(45deg);
-  animation: fall 6s linear infinite;
+.question {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-.heart::before,
-.heart::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: inherit;
-  border-radius: 50%;
+.answers button {
+  font-size: 18px;
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
 }
 
-.heart::before {
-  top: -10px;
-  left: 0;
-}
-
-.heart::after {
-  left: -10px;
-  top: 0;
-}
-
-@keyframes fall {
-  0% {
-    top: -10%;
-    opacity: 1;
-  }
-  100% {
-    top: 110%;
-    opacity: 0;
-  }
+.note {
+  font-size: 100px;
+  overflow-y: auto;
+  max-height: 70vh;
 }
 
   </style>
 </head>
-<body>
-  <div class="frame">
-    <p>I made this just for you. Thank you for existing and for being so lovable in your own little ways. I want to tell you how important you are para sakin. You're irreplaceable and no matter what happens, no one could ever make me feel the way you do.Honestly, you ruin my peace sometimes. You pop into my thoughts out of nowhere and suddenly, the whole world feels too quiet or too loud. And the weird part is, I don't even mind. You ruin the parts of me I thought I had already figured out. You make me second guess if I was ever really okay before you came into my life. Because now, nothing feels enough if you’re not part of it.
-
-You make simple days feel like something more. Kahit wala kang ginagawa minsan, just the thought of you changes everything. I never expected someone like you to matter this much, but now that you do, I wouldn’t want it any other way. I don’t want peace if peace means not thinking about you.
-
-You’re the person I’d choose to mess things up with if it means I get to feel something real. You make everything complicated but in the best way. I want that. I want the overthinking, the late-night thoughts, the softness, the longing. I want all of it. You make me want more. Not of anything else, just more of you.
-
-You're not perfect, and I don't want you to be. I just want you to be real, to be you, because that’s already more than enough. You’re the only one who can mess with my thoughts and still leave me smiling at the end of the day. You make me care more than I planned to. And maybe that’s the point.
-
-You're the kind of person who can ruin everything just by being unforgettable. But I’d still let you. I’d let you stay in my head. I’d let your name echo every time I try to distract myself. I’d let the thought of you ruin my silence if it means I get to feel close to you, even in the smallest way.
-
-You're irreplaceable. Not just in the usual way people say it. You're the kind of irreplaceable that stays even when everything else fades. I don't want a version of you. I want you, exactly how you are, flaws and all. You're the kind of person I’d never get tired of choosing, even when it’s hard.
-
-You might not know how much space you take up in my life, but it's a lot. You’re in my random thoughts, my saved songs, the way I write now. You changed me, and that’s not something I say lightly. I don’t want to go back to who I was before you. That version of me didn’t know how good it feels to care about someone this deeply.
-
-So no matter how messy or complicated things get, I want you to know this. You matter to me more than you think. You're not just someone I like having around. You're someone I don’t want to imagine life without.
-
-And that's the kind of ruin I’d gladly live with.</p>
-
-  </div>  <!-- Heart
+<body><div class="question-container active" id="q1">
+  <div class="question">Do you know what this is for?</div>
+  <div class="answers">
+    <button onclick="next('q1', 'q2')">No (Bruh okay)</button>
+    <button onclick="next('q1', 'q2')">Yes (😵😵😵😵😵)</button>
+  </div>
+</div><div class="question-container" id="q2">
+  <div class="question">1 × 1???</div>
+  <div class="answers">
+    <button onclick="next('q2', 'q3')">1 (yis galing 🤩)</button>
+    <button onclick="next('q2', 'q3')">1 😈</button>
+  </div>
+</div><div class="question-container" id="q3">
+  <div class="question">2 × 2???</div>
+  <div class="answers">
+    <button onclick="next('q3', 'q4')">4 (WOWKWIWSHSUSYSHDH)</button>
+    <button onclick="next('q3', 'q4')">12938372 (😡😡😡)</button>
+  </div>
+</div><div class="question-container" id="q4">
+  <div class="question">1 + 2???</div>
+  <div class="answers">
+    <button onclick="next('q4', 'note')">3 (🤩🤩🤩🤩🤩)</button>
+    <button onclick="next('q4', 'note')">17172527 (😤😤😤)</button>
+  </div>
+</div><div class="note-container" id="note">
+  <div class="note">
+    <p style="font-size: 30px; line-height: 1.4;">Note: Happy birthday Hyeri, thank you for existing.</p>
+    <p style="font-size: 30px; line-height: 1.4;">
+      I know this may look random but I wanted something silly and sweet to make you smile. Life can get overwhelming and sometimes we forget to stop and appreciate things that make us feel okay. Kaya eto. Just a small corner for you to remember you're appreciated and you're important. You being here is already something I'm thankful for. I know I don't always say things right or loud but I'm quietly proud of you and I hope you keep going at your own pace. You’re doing great, even when it doesn’t feel like it. Keep growing, keep choosing yourself and know that someone out here is happy you exist. Happy birthday ulit.
+    </p>
+  </div>
+</div><script>
+  function next(currentId, nextId) {
+    document.getElementById(currentId).classList.remove('active');
+    document.getElementById(nextId).classList.add('active');
+  }
+</script></body>
+</html>
