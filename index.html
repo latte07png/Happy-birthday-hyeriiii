@@ -2,18 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #f6a9d2, #6ec1e4, #c19ff5);
       background-size: 600% 600%;
       animation: gradientBG 10s ease infinite;
       overflow-x: hidden;
-      color: white;
     }
 
     @keyframes gradientBG {
@@ -22,143 +19,162 @@
       100% { background-position: 0% 50%; }
     }
 
-    .question-container, .note-container {
+    .question-container {
       display: none;
-      margin: 40px auto;
-      max-width: 90%;
-      border: 2px solid #fff;
-      border-radius: 20px;
-      background-color: rgba(0, 0, 0, 0.4);
       padding: 20px;
+      margin: 80px auto;
+      max-width: 800px;
+      border: 2px solid white;
+      border-radius: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      text-align: center;
     }
 
-    .question-container.active, .note-container.active {
+    .question-container.active {
       display: block;
     }
 
     .question {
       font-size: 28px;
       margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .answers {
-      text-align: center;
     }
 
     .answers button {
       font-size: 20px;
       margin: 10px;
-      padding: 10px 20px;
+      padding: 12px 25px;
       border: none;
       border-radius: 10px;
-      background-color: #fff;
-      color: #333;
+      background-color: white;
+      color: #444;
       cursor: pointer;
     }
 
-    .note {
-      max-height: 80vh;
-      overflow-y: auto;
+    .note-container {
+      display: none;
+      position: relative;
+      margin: 50px auto;
       padding: 30px;
+      max-width: 800px;
+      height: 90vh;
+      border: 3px dashed white;
+      border-radius: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      overflow-y: auto;
+    }
+
+    .note p {
       font-size: 24px;
       line-height: 1.6;
-      border: 2px dashed white;
-      background-color: rgba(255,255,255,0.05);
+      margin-bottom: 20px;
     }
 
-    .note .bold {
+    .note p.bold {
       font-weight: bold;
-      font-size: 30px;
     }
 
-    /* Heart rain */
+    .note-container::-webkit-scrollbar {
+      width: 15px;
+    }
+
+    .note-container::-webkit-scrollbar-thumb {
+      background: #fff;
+      border-radius: 10px;
+    }
+
+    .note-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
     .heart {
       position: fixed;
-      top: -2em;
+      top: -10px;
+      font-size: 25px;
       animation: fall 5s linear infinite;
-      opacity: 0.8;
-      font-size: 20px;
-      z-index: 999;
+      color: white;
+      pointer-events: none;
     }
 
     @keyframes fall {
       to {
-        transform: translateY(120vh);
+        transform: translateY(100vh);
         opacity: 0;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Heart Rain Container -->
-  <script>
-    const hearts = ['💙', '🩷', '💜'];
-    for (let i = 0; i < 50; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (2 + Math.random() * 3) + 's';
-      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-      document.body.appendChild(heart);
-    }
-  </script>
 
-  <!-- Questions -->
-  <div class="question-container active" id="q1">
-    <div class="question">Do you know what this is for?</div>
-    <div class="answers">
-      <button onclick="next('q1', 'q2')">No (Bruh okay)</button>
-      <button onclick="next('q1', 'q2')">Yes (😵😵😵😵😵)</button>
-    </div>
+<div class="question-container active" id="q1">
+  <div class="question">Do you know what this is for?</div>
+  <div class="answers">
+    <button onclick="reply('Bruh okay', 'q2')">No</button>
+    <button onclick="reply('😵😵😵😵😵', 'q2')">Yes</button>
   </div>
+</div>
 
-  <div class="question-container" id="q2">
-    <div class="question">1 × 1???</div>
-    <div class="answers">
-      <button onclick="next('q2', 'q3')">1 (yis galing 🤩)</button>
-      <button onclick="next('q2', 'q3')">1 😈</button>
-    </div>
+<div class="question-container" id="q2">
+  <div class="question">1 × 1 ???</div>
+  <div class="answers">
+    <button onclick="reply('yis galing 🤩', 'q3')">1</button>
+    <button onclick="reply('😈', 'q3')">1 😈</button>
   </div>
+</div>
 
-  <div class="question-container" id="q3">
-    <div class="question">2 × 2???</div>
-    <div class="answers">
-      <button onclick="next('q3', 'q4')">4 (WOWKWIWSHSUSYSHDH)</button>
-      <button onclick="next('q3', 'q4')">12938372 (😡😡😡)</button>
-    </div>
+<div class="question-container" id="q3">
+  <div class="question">2 × 2 ???</div>
+  <div class="answers">
+    <button onclick="reply('WOWKWIWSHSUSYSHDH', 'q4')">4</button>
+    <button onclick="reply('😡😡😡', 'q4')">12938372</button>
   </div>
+</div>
 
-  <div class="question-container" id="q4">
-    <div class="question">1 + 2???</div>
-    <div class="answers">
-      <button onclick="next('q4', 'note')">3 (🤩🤩🤩🤩🤩)</button>
-      <button onclick="next('q4', 'note')">17172527 (😤😤😤)</button>
-    </div>
+<div class="question-container" id="q4">
+  <div class="question">1 + 2 ???</div>
+  <div class="answers">
+    <button onclick="reply('🤩🤩🤩🤩🤩', 'note')">3</button>
+    <button onclick="reply('😤😤😤', 'note')">17172527</button>
   </div>
+</div>
 
-  <!-- Note -->
-  <div class="note-container" id="note">
-    <div class="note">
-      <p>I don’t really know how to make this sound perfect but I hope it means something to you. I just want to say thank you for being here. You probably don’t notice it, but your presence makes a big difference. You’re the kind of person na kahit simple lang, may impact ka pa rin sa mga tao around you.</p>
-
-      <p>Hindi ako yung best sa pagbati or sa mga pa-special na sulat pero this is me being real. I appreciate you. I admire your softness, your strength, and the way you stay true to yourself. Kahit hindi ko lagi nasasabi, ang laking bagay ng existence mo sakin.</p>
-
-      <p>Life gets loud and messy, and sometimes we forget to slow down. So I hope today you take a moment to feel proud of how far you’ve come. You deserve a peaceful kind of happiness, one that doesn't need to be loud just to be real. I hope you feel seen, even in silence, and loved even on your quiet days.</p>
-
-      <p>I don’t have anything big to give you, but I want you to know na kahit tahimik lang ako minsan, I’m genuinely wishing you the best. I’ll always be rooting for you from where I am.</p>
-
-      <p class="bold">you’re irreplaceable</p>
-
-      <p>So happy birthday, Hyeri. Thank you for being you, thank you for existing.</p>
-    </div>
+<div class="note-container" id="note">
+  <div class="note">
+    <p>Happy birthday, Hyeri 💖</p>
+    <p>I made this just for you. Thank you for existing and being so lovable in your own little ways.</p>
+    <p>I want to tell you how important you are to me. Sometimes I don’t know how to say it, but I really mean it.</p>
+    <p>You make things lighter just by being there, and I’m super thankful I got to know you.</p>
+    <p class="bold">You're irreplaceable.</p>
+    <p>I don’t really know how to make this sound perfect but I hope it means something to you. I just want to say thank you for being here. You probably don’t notice it, but your presence makes a big difference. You’re the kind of person na kahit simple lang, may impact ka pa rin sa mga tao around you.</p>
+    <p>Hindi ako yung best sa pagbati or sa mga pa-special na sulat pero this is me being real. I appreciate you. I admire your softness, your strength, and the way you stay true to yourself. Kahit hindi ko lagi nasasabi, ang laking bagay ng existence mo sakin.</p>
+    <p>Life gets loud and messy, and sometimes we forget to slow down. So I hope today you take a moment to feel proud of how far you’ve come. You deserve a peaceful kind of happiness, one that doesn't need to be loud just to be real. I hope you feel seen, even in silence, and loved even on your quiet days.</p>
+    <p>I don’t have anything big to give you, but I want you to know na kahit tahimik lang ako minsan, I’m genuinely wishing you the best. I’ll always be rooting for you from where I am.</p>
+    <p>So happy birthday, Hyeri. Thank you for being you, thank you for existing. 💜</p>
   </div>
+</div>
 
-  <script>
-    function next(currentId, nextId) {
-      document.getElementById(currentId).classList.remove('active');
+<script>
+  function reply(message, nextId) {
+    alert(message);
+    document.querySelectorAll('.question-container').forEach(el => el.classList.remove('active'));
+    document.getElementById(nextId).style.display = "block";
+    if (nextId !== "note") {
       document.getElementById(nextId).classList.add('active');
     }
-  </script>
+  }
+
+  const hearts = ["💙", "🩷", "💜"];
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = 2 + Math.random() * 3 + "s";
+    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+  }, 300);
+</script>
+
 </body>
 </html>
