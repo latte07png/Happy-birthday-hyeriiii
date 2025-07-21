@@ -1,97 +1,114 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>Birthday Surprise</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #6ec1e4, #f6a9d2, #c19ff5);
+      background: linear-gradient(135deg, #f6a9d2, #6ec1e4, #c19ff5);
       background-size: 600% 600%;
       animation: gradientBG 10s ease infinite;
       color: #fff;
       text-align: center;
-    }@keyframes gradientBG {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
+    }
 
-.question-container, .note-container {
-  display: none;
-  padding: 20px;
-  margin: 50px auto;
-  max-width: 700px;
-  border: 2px solid #fff;
-  border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.4);
-}
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
 
-.question-container.active, .note-container.active {
-  display: block;
-}
+    .question-container, .note-container {
+      display: none;
+      padding: 20px;
+      margin: 50px auto;
+      max-width: 800px;
+      border: 2px solid #fff;
+      border-radius: 20px;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
 
-.question {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
+    .question-container.active, .note-container.active {
+      display: block;
+    }
 
-.answers button {
-  font-size: 18px;
-  margin: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  background-color: #fff;
-  color: #333;
-  cursor: pointer;
-}
+    .question {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
 
-.note {
-  font-size: 100px;
-  overflow-y: auto;
-  max-height: 70vh;
-}
+    .answers button {
+      font-size: 20px;
+      margin: 10px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 10px;
+      background-color: #fff;
+      color: #333;
+      cursor: pointer;
+    }
 
+    .note {
+      font-size: 28px;
+      overflow-y: auto;
+      max-height: 70vh;
+      padding: 20px;
+      line-height: 1.6;
+    }
   </style>
 </head>
-<body><div class="question-container active" id="q1">
+<body>
+
+<div class="question-container active" id="q1">
   <div class="question">Do you know what this is for?</div>
   <div class="answers">
-    <button onclick="next('q1', 'q2')">No (Bruh okay)</button>
-    <button onclick="next('q1', 'q2')">Yes (😵😵😵😵😵)</button>
+    <button onclick="respond('q1', 'q2', 'Bruh okay')">No</button>
+    <button onclick="respond('q1', 'q2', '😵😵😵😵😵')">Yes</button>
   </div>
-</div><div class="question-container" id="q2">
+</div>
+
+<div class="question-container" id="q2">
   <div class="question">1 × 1???</div>
   <div class="answers">
-    <button onclick="next('q2', 'q3')">1 (yis galing 🤩)</button>
-    <button onclick="next('q2', 'q3')">1 😈</button>
+    <button onclick="respond('q2', 'q3', 'yis galing 🤩')">1</button>
+    <button onclick="respond('q2', 'q3', '😈')">1</button>
   </div>
-</div><div class="question-container" id="q3">
+</div>
+
+<div class="question-container" id="q3">
   <div class="question">2 × 2???</div>
   <div class="answers">
-    <button onclick="next('q3', 'q4')">4 (WOWKWIWSHSUSYSHDH)</button>
-    <button onclick="next('q3', 'q4')">12938372 (😡😡😡)</button>
+    <button onclick="respond('q3', 'q4', 'WOWKWIWSHSUSYSHDH')">4</button>
+    <button onclick="respond('q3', 'q4', '😡😡😡')">12938372</button>
   </div>
-</div><div class="question-container" id="q4">
+</div>
+
+<div class="question-container" id="q4">
   <div class="question">1 + 2???</div>
   <div class="answers">
-    <button onclick="next('q4', 'note')">3 (🤩🤩🤩🤩🤩)</button>
-    <button onclick="next('q4', 'note')">17172527 (😤😤😤)</button>
+    <button onclick="respond('q4', 'note', '🤩🤩🤩🤩🤩')">3</button>
+    <button onclick="respond('q4', 'note', '😤😤😤')">17172527</button>
   </div>
-</div><div class="note-container" id="note">
+</div>
+
+<div class="note-container" id="note">
   <div class="note">
-    <p style="font-size: 30px; line-height: 1.4;">Note: Happy birthday Hyeri, thank you for existing.</p>
-    <p style="font-size: 30px; line-height: 1.4;">
-      I know this may look random but I wanted something silly and sweet to make you smile. Life can get overwhelming and sometimes we forget to stop and appreciate things that make us feel okay. Kaya eto. Just a small corner for you to remember you're appreciated and you're important. You being here is already something I'm thankful for. I know I don't always say things right or loud but I'm quietly proud of you and I hope you keep going at your own pace. You’re doing great, even when it doesn’t feel like it. Keep growing, keep choosing yourself and know that someone out here is happy you exist. Happy birthday ulit.
-    </p>
+    <p><strong>Note: Happy birthday Hyeri, thank you for existing.</strong></p>
+    <p>I know this may look random but I wanted something silly and sweet to make you smile. Life can get overwhelming and sometimes we forget to stop and appreciate things that make us feel okay. Kaya eto. Just a small corner for you to remember you're appreciated and you're important. You being here is already something I'm thankful for. I know I don't always say things right or loud but I'm quietly proud of you and I hope you keep going at your own pace. You’re doing great, even when it doesn’t feel like it. Keep growing, keep choosing yourself and know that someone out here is happy you exist. Happy birthday ulit.</p>
   </div>
-</div><script>
-  function next(currentId, nextId) {
+</div>
+
+<script>
+  function respond(currentId, nextId, message) {
+    alert(message);
     document.getElementById(currentId).classList.remove('active');
     document.getElementById(nextId).classList.add('active');
   }
-</script></body>
+</script>
+
+</body>
 </html>
