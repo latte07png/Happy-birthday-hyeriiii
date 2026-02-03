@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine</title>
+
+  <style>
+    body {
+      background-color: pink;
+      overflow: hidden;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 50px;
+    }
+
+    div {
+      margin-top: 200px;
+      text-align: center;
+    }
+
+    button {
+      font-size: 15px;
+      padding: 8px 15px;
+      cursor: pointer;
+    }
+
+    #Yes {
+      background-color: green;
+      animation: pulse 0.5s infinite;
+    }
+
+    #No {
+      background-color: red;
+      position: fixed;
+      top: 300px;
+      left: 50%;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>Will you be my Valentine? ❤️</h1>
+    <button id="Yes">Yes!</button>
+    <button id="No">No</button>
+  </div>
+
+  <script>
+    document.getElementById("Yes").addEventListener("click", () => {
+      alert("I love you! ❤️");
+    });
+
+    const noBtn = document.getElementById("No");
+
+    function moveButton() {
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+
+      noBtn.style.left = Math.random() * maxX + "px";
+      noBtn.style.top = Math.random() * maxY + "px";
+    }
+
+    noBtn.addEventListener("mouseenter", moveButton); // PC
+    noBtn.addEventListener("touchstart", moveButton); // Mobile
+  </script>
+</body>
+</html>
